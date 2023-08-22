@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::middleware('guest')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::get('/login', [LoginController::class, 'index']);
@@ -22,5 +24,6 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [PageController::class, 'home']);
+    Route::get('/home', [PageController::class, 'index']);
+    Route::get('/users', [UserController::class, 'index']);
 });

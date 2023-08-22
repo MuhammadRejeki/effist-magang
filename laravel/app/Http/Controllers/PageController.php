@@ -8,6 +8,9 @@ class PageController extends Controller
 {
     public function index()
     {
-        echo "home";
+        $transfer = [
+            'menu' => 'dashboard'
+        ];
+        return view('home', $transfer);
     }
 }
