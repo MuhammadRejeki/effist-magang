@@ -7,9 +7,16 @@
 - Using Mazer Template (Near Pro)
 - Using Highchart JS
 
-## STEP 1 Framework
+## Installation
 
-Open your console (cmd) and go to your project folder "(your repository)/laravel"
+1. Clone this project
+
+```
+git clone https://github.com/MuhammadRejeki/effist-magang.git
+cd effist-magang/laravel
+```
+
+2. Download vendor library (make sure you already in "(your repository)/laravel")
 
 ```
 composer install
@@ -17,12 +24,13 @@ php -r "copy('.env.example', '.env');"
 php artisan key:generate
 ```
 
-## STEP 2
+3. Configure and migrate the database
 
 ```
 - Configure your database on .env
 - use command "php artisan migrate:fresh --seed"
-- ENJOY
 ```
 
-<b> DEVELOPER MAGANG TEST | Kiki</b>
+4. ENJOY
+
+<b> DEVELOPER MAGANG TEST | KIKI</b>
