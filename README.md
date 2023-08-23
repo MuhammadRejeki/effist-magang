@@ -34,4 +34,8 @@ php artisan key:generate
 
 4. ENJOY
 
+<img src="./readme1.PNG" style="width:80%;text-align:center;">
+
+<img src="./readme2.PNG" style="width:80%;text-align:center;">
+
 <b> DEVELOPER MAGANG TEST | KIKI</b>
