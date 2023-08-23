@@ -63,26 +63,58 @@
 
 <section class="free-name">
     <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">*</h4>
-                </div>
-                <div class="card-content">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h6>**</h6>
-                                <p>
-                                    Use <code>.***</code> for code
-                                </p>
+        <div class="col-8">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <figure class="highcharts-figure">
+                                            <div id="graph-agama"></div>
+                                            <p class="highcharts-description">
+
+                                            </p>
+                                        </figure>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
+        <div class="col-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">News</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body pt-0">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="list-group">
+                                        @foreach($news as $n)
+                                        <a href="#" class="list-group-item list-group-item-action ">
+                                            <img src="{{ url('assets/images/image-default.png') }}" class="img-fluid w-100 mb-1">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class=" mb-1 text-white" style="font-family:Arial;font-size:12pt">{{ $n->title }}</h5>
+                                                <small><i>3 days ago</i></small>
+                                            </div>
+                                            <small>{{ substr($n->content,0,40) }} ......</small>
+                                        </a>
+                                        <hr>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </section>
 
 
@@ -96,7 +128,61 @@
 <script src="{{ url('assets/vendors/datatable/1.13.6/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ url('assets/vendors/datatable/1.13.6/js/dataTables.bootstrap5.min.js') }}"></script>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 <script>
-    $(document).ready(function() {});
+    $(document).ready(function() {
+        Highcharts.chart('graph-agama', {
+            chart: {
+                plotBackgroundColor: null,
+                backgroundColor: 'transparent',
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Grafik Jumlah Agama Pada Sistem',
+                align: 'left',
+                style: {
+                    color: '#FFF',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Agama',
+                colorByPoint: true,
+                data: [
+                    @foreach($grp_agama as $l) {
+                        name: "{{ $l['name'] }}",
+                        y: <?= $l['jumlah'] ?>
+                    },
+                    @endforeach
+                ]
+            }]
+        });
+
+
+    });
 </script>
 @endsection

@@ -17,8 +17,10 @@ class News extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->text('title');
+            $table->text('image')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

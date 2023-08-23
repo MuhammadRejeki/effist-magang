@@ -18,6 +18,7 @@ class UserFactory extends Factory
             'password' => '$2y$10$NzEuqGkb1rw/0SLklDIsSeGqba7rAW8ELN.R/sgW3uV05xfC64MPW', // admin
             'gender' => $gender,
             'marital_status' => $this->faker->randomElement(['single', 'married']),
+            'religion' => $this->faker->randomElement(['islam', 'kristen', 'protestan', 'katholik', 'hindu', 'budha']),
             'remember_token' => Str::random(10),
         ];
     }
