@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -27,5 +28,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [PageController::class, 'index']);
     Route::get('/home/{id}/view', [PageController::class, 'view']);
     Route::post('/data-users', [PageController::class, 'data_users']);
+
+
+
     Route::get('/users', [UserController::class, 'index']);
+
+
+    Route::get('/news', [NewsController::class, 'index']);
+    Route::post('/news', [NewsController::class, 'tambah']);
+    Route::post('/news/list', [NewsController::class, 'list']);
+    Route::post('/news/data', [NewsController::class, 'data']);
+    Route::post('/news/save', [NewsController::class, 'save_data']);
+    Route::post('/news/hapus', [NewsController::class, 'hapus']);
 });

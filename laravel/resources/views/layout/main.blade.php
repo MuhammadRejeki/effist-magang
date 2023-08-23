@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ url('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ url('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
 
+    <link rel="stylesheet" href="{{ url('assets/vendors/toastify/toastify.css') }}">
     @yield('custom-css')
 
     <script src="{{ url('assets/js/jquery.min.js') }}"></script>
@@ -41,14 +42,15 @@
 
 
     <!-- <script src="https://zuramai.github.io/mazer/demo/assets/static/js/pages/form-element-select.js"></script> -->
-
     <!-- <script src="{{ url('assets/js/bootstrap.bundle.min.js') }}"></script> -->
+
     <script src="{{ url('assets/vendors/choices.js/choices.min.js') }}"></script>
 
     <script src="{{ url('assets/js/dark.js') }}"></script>
     <script src="{{ url('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ url('assets/js/app.js') }}"></script>
 
+    <script src="{{ url('assets/vendors/toastify/toastify.js') }}"></script>
     @yield('custom-js')
 </body>
 
