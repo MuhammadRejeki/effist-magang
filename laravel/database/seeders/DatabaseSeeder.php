@@ -30,7 +30,10 @@ class DatabaseSeeder extends Seeder
             'marital_status' => 'married'
         ]);
 
-        User::factory(10)->create();
+        User::factory(15)->create();
+        Company::create([
+            'name' => 'Effist Suite Office'
+        ]);
         Company::factory(6)->create();
         News::factory(7)->create();
 

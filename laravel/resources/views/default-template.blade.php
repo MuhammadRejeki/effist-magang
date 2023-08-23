@@ -34,7 +34,18 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                **
+                                <table id="myTable" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <td>asd</td>
+                                            <td>asdasd</td>
+                                            <td>email</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -70,4 +81,41 @@
 
 
 
+@endsection
+
+@section('custom-css')
+<link href="{{ url('assets/vendors/datatable/1.13.6/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
+@endsection
+@section('custom-js')
+<script src="{{ url('assets/vendors/datatable/1.13.6/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url('assets/vendors/datatable/1.13.6/js/dataTables.bootstrap5.min.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#myTable").dataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                "url": "{{ url('/data-users') }}",
+                "type": "POST",
+                "data": {
+                    '_token': '<?php echo csrf_token() ?>'
+                }
+            },
+            columns: [{
+                    data: 'id',
+                    name: 'id'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'email',
+                    name: 'email'
+                }
+            ]
+        });
+    });
+</script>
 @endsection

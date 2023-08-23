@@ -25,5 +25,6 @@ Route::middleware('guest')->group(function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [PageController::class, 'index']);
+    Route::post('/data-users', [PageController::class, 'data_users']);
     Route::get('/users', [UserController::class, 'index']);
 });
