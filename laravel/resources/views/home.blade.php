@@ -125,7 +125,11 @@
                                     <div class="list-group">
                                         @foreach($news as $n)
                                         <a href="{{ url('/home/'.$n->id.'/view') }}" target="_blank" class="list-group-item list-group-item-action ">
-                                            <img src="{{ url('assets/images/image-default.png') }}" class="img-fluid w-100 mb-1">
+                                            <?php
+                                            $img = asset('assets/images/image-default.png');
+                                            if (is_file('./assets/images/news/' . $n->image)) $img = asset('assets/images/news/' . $n->image);
+                                            ?>
+                                            <img src="{{ $img }}" class="img-fluid w-100 mb-1">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class=" mb-1 text-white" style="font-family:Arial;font-size:12pt">{{ $n->title }}</h5>
                                                 <small><i>{{ date('d/m/Y H:i',strtotime($n->created_at)) }}</i></small>

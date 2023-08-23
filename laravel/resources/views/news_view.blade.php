@@ -34,12 +34,7 @@
                     <div class="card-body">
                         <?php
                         $img = asset('assets/images/image-default.png');
-                        if (is_file('./assets/images/news/' . $data->image)) {
-                            $img = './assets/images/news/' . $data->image;
-                        }
-                        $img = asset('assets/images/news/' . $data->image);
-
-                        echo $img;
+                        if (is_file('./assets/images/news/' . $data->image)) $img = asset('assets/images/news/' . $data->image);
                         ?>
                         <image src="{{ $img }}" class="img-fluid">
                             <br>
