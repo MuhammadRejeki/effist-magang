@@ -5,6 +5,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\CompanyController;
 
 /*
@@ -49,4 +50,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/company/data', [CompanyController::class, 'data']);
     Route::post('/company/save', [CompanyController::class, 'save_data']);
     Route::post('/company/hapus', [CompanyController::class, 'hapus']);
+
+    Route::get('/status', [StatusController::class, 'index']);
+    Route::post('/status', [StatusController::class, 'tambah']);
+    Route::post('/status/list', [StatusController::class, 'list']);
+    Route::post('/status/data', [StatusController::class, 'data']);
+    Route::post('/status/save', [StatusController::class, 'save_data']);
+    Route::post('/status/hapus', [StatusController::class, 'hapus']);
 });

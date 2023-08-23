@@ -15,7 +15,7 @@
                         <a href="{{ url('/home') }}"> <i class="bi bi-laptop"></i> Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        Company
+                        Employeement Status
                     </li>
                 </ol>
             </nav>
@@ -28,7 +28,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Tambah Company</h4>
+                    <h4 class="card-title">Tambah Employeement Status</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body pt-0">
@@ -37,11 +37,11 @@
                             <i>{{ session('success') }}</i>
                         </p>
                         @endif
-                        <form action="{{ url('/company') }}" method="post" autocomplete="off">
+                        <form action="{{ url('/status') }}" method="post" autocomplete="off">
                             @csrf
 
                             <div class="form-group">
-                                <label for="name">Name Company</label>
+                                <label for="name">Name</label>
                                 <input type="text" class="form-control" name="name" placeholder="Name" required>
                             </div>
 
@@ -58,7 +58,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Daftar company</h4>
+                    <h4 class="card-title">Daftar Employeement Status</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body pt-0">
@@ -68,7 +68,7 @@
                                     <thead>
                                         <tr>
                                             <td>No</td>
-                                            <td>Name Company</td>
+                                            <td>Employement Status </td>
                                             <td></td>
                                         </tr>
                                     </thead>
@@ -101,7 +101,7 @@
                 <div class="modal-body">
                     <input type="hidden" id="idnya" name="id">
                     <div class="form-group">
-                        <label for="name">Name Company</label>
+                        <label for="name">Name </label>
                         <input type="text" class="form-control" name="name" id="name" placeholder="name" required>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                "url": "{{ url('/company/list') }}",
+                "url": "{{ url('/status/list') }}",
                 "type": "POST",
                 "data": {
                     '_token': '<?php echo csrf_token() ?>'
@@ -170,7 +170,7 @@
 
         $.fn.delete = function(idx) {
             $.ajax({
-                url: "{{ url('/company/hapus/') }}",
+                url: "{{ url('/status/hapus/') }}",
                 data: {
                     '_token': '<?php echo csrf_token() ?>',
                     "id": idx,
@@ -195,7 +195,7 @@
 
         $.fn.edit = function(idx) {
             $.ajax({
-                url: "{{ url('/company/data/') }}",
+                url: "{{ url('/status/data/') }}",
                 data: {
                     '_token': '<?php echo csrf_token() ?>',
                     "id": idx,
@@ -216,7 +216,7 @@
             event.preventDefault();
 
             $.ajax({
-                url: "{{ url('/company/save/') }}",
+                url: "{{ url('/status/save/') }}",
                 data: new FormData(this),
                 type: "POST",
                 dataType: "JSON",
