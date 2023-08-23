@@ -34,7 +34,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/users', [UserController::class, 'index']);
-
+    Route::post('/users', [UserController::class, 'tambah']);
+    Route::post('/users/list', [UserController::class, 'list']);
+    Route::post('/users/data', [UserController::class, 'data']);
+    Route::post('/users/save', [UserController::class, 'save_data']);
+    Route::post('/users/hapus', [UserController::class, 'hapus']);
 
     Route::get('/news', [NewsController::class, 'index']);
     Route::post('/news', [NewsController::class, 'tambah']);
