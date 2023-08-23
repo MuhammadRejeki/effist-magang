@@ -20,6 +20,7 @@ cd effist-magang/laravel
 
 ```
 composer install
+php artisan vendor:publish --tag=datatables
 php -r "copy('.env.example', '.env');"
 php artisan key:generate
 ```
