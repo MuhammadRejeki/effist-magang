@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12 col-md-6 order-md-1 order-last">
             <p class="text-subtitle text-muted">
-                {{ date('l'); }}, <i>{{ date('d M Y') }}</i>
+                Publish : <i>{{ date('d M Y H:i:s',strtotime($data->created_at)) }}</i>
             </p>
         </div>
         <div class="col-12 col-md-6 order-md-2 order-first">
@@ -15,7 +15,7 @@
                         <a href="{{ url('/home') }}"> <i class="bi bi-laptop"></i> Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        *
+                        News Detail
                     </li>
                 </ol>
             </nav>
@@ -28,109 +28,27 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Top 5 Company | Most Employees</h4>
+                    <h4 class="card-title">{{ $data->title }}</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <table id="myTable" class="table table-bordered">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <td width="50px">Rank</td>
-                                            <td>Company</td>
-                                            <td>Employees</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($company as $c)
-                                        <tr>
-                                            <td class="text-center">{{ $loop->iteration }}</td>
-                                            <td>{{ $c->name }}</td>
-                                            <td class="text-center">{{ $c->user_count }} orang</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <?php
+                        $img = asset('assets/images/image-default.png');
+                        if (is_file('./assets/images/news/' . $data->image)) {
+                            $img = './assets/images/news/' . $data->image;
+                        }
+                        $img = asset('assets/images/news/' . $data->image);
+
+                        echo $img;
+                        ?>
+                        <image src="{{ $img }}" class="img-fluid">
+                            <br>
+                            {{ $data->content }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-<section class="free-name">
-    <div class="row">
-        <div class="col-8">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <figure class="highcharts-figure">
-                                    <div id="graph-agama"></div>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <figure class="highcharts-figure">
-                                    <div id="graph-gender"></div>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <figure class="highcharts-figure">
-                                    <div id="graph-marital"></div>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <figure class="highcharts-figure">
-                                    <div id="graph-status"></div>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-4">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">News</h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body pt-0">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="list-group">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 </section>
 
 
